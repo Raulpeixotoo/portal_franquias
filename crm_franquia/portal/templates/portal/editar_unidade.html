@@ -1,0 +1,28 @@
+<!-- portal/templates/portal/editar_unidade.html -->
+{% extends 'portal/base.html' %}
+
+{% block title %}Editar Unidade{% endblock %}
+
+{% block content %}
+<h2>Editar Unidade: {{ unidade.unidade }}</h2>
+<form method="post" enctype="multipart/form-data" class="mt-4">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="candidato" class="form-label">candidato</label>
+        <input type="text" id="candidato" name="candidato" value="{{ unidade.candidato }}" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="contato_telefone" class="form-label">contato telefone</label>
+        <input type="text" id="contato_telefone" name="contato_telefone" value="{{ unidade.contato_telefone }}" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="anexo" class="form-label">Anexo</label>
+        <input type="file" id="anexo" name="anexo" class="form-control">
+        {% if unidade.anexo %}
+            <p>Arquivo atual: <a href="{{ unidade.anexo.url }}" target="_blank">{{ unidade.anexo.name }}</a></p>
+        {% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="{% url 'dashboard_franqueado' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

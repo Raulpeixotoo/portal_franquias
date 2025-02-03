@@ -1,0 +1,37 @@
+<!-- portal/templates/portal/dashboard_franqueado.html -->
+{% extends 'portal/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Dashboard do Franqueado</h2>
+<p class="text-muted">Bem-vindo, {{ user.username }}!</p>
+
+{% if unidades %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Candidato</th>
+                <th>Unidade</th>
+                <th>Status</th>
+                <th>Inserir Dados</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for unidade in unidades %}
+            <tr>
+                <td>{{ unidade.unidade }}</td>
+                <td>{{ unidade.candidato }}</td>
+                <td>{{ unidade.get_status_display }}</td> <!-- Exibe o status -->
+                <td><a href="{% url 'editar_unidade' unidade.pk %}" class="btn btn-sm btn-warning">Editar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="alert alert-info">
+        Você ainda não tem unidades cadastradas. 
+        Por favor entre em Contato com algum funcionario responsável.!
+    </div>
+{% endif %}
+{% endblock %}

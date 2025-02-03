@@ -1,0 +1,12 @@
+<!-- portal/templates/portal/home.html -->
+{% extends 'portal/base.html' %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1>Bem-vindo ao seu Portal do Franqueado</h1>
+    <p class="lead">Faça login para continuar.</p>
+    <a href="{% url 'login' %}" class="btn btn-primary">Fazer Login</a>
+</div>
+{% endblock %}
