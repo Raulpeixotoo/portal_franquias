@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="{% static 'crm_app/css/styles.css' %}">
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+    <a href="{% url 'novo_cliente' %}">Novo Cliente</a>
+    <ul>
+        {% for cliente in clientes %}
+            <li>
+                <a href="{% url 'detalhes_cliente' cliente.pk %}">{{ cliente.nome }}</a>
+                <a href="{% url 'editar_cliente' cliente.pk %}">Editar</a>
+                <a href="{% url 'excluir_cliente' cliente.pk %}">Excluir</a>
+            </li>
+        {% empty %}
+            <li>Nenhum cliente cadastrado.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

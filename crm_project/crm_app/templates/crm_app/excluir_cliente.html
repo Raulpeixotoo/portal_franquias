@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excluir Cliente</title>
+    <link rel="stylesheet" href="{% static 'crm_app/css/styles.css' %}">
+</head>
+<body>
+    <h1>Excluir Cliente</h1>
+    <p>Você tem certeza que deseja excluir o cliente "{{ cliente.nome }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar</button>
+    </form>
+    <a href="{% url 'lista_clientes' %}">Cancelar</a>
+</body>
+</html>

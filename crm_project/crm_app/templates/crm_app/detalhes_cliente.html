@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalhes do Cliente</title>
+    <link rel="stylesheet" href="{% static 'crm_app/css/styles.css' %}">
+</head>
+<body>
+    <h1>{{ cliente.nome }}</h1>
+    <p>Email: {{ cliente.email }}</p>
+    <p>Telefone: {{ cliente.telefone }}</p>
+    <p>Endereço: {{ cliente.endereco }}</p>
+    <p>Cidade: {{ cliente.cidade }}</p>
+    <p>Estado: {{ cliente.estado }}</p>
+    <p>CEP: {{ cliente.cep }}</p>
+    <p>Data de Nascimento: {{ cliente.data_nascimento }}</p>
+    <p>Profissão: {{ cliente.profissao }}</p>
+    <p>Observações: {{ cliente.observacoes }}</p>
+    <a href="{% url 'lista_clientes' %}">Voltar</a>
+</body>
+</html>
